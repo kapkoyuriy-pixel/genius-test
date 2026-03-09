@@ -18,3 +18,21 @@ backdrop.addEventListener("click", (e) => {
     backdrop.classList.add("is-hidden");
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuOpenBtn = document.querySelector(".menu-btn-open");
+  const menuCloseBtn = document.querySelector(".menu-btn-close");
+  const mobileMenu = document.querySelector(".mobile-menu");
+
+  if (menuOpenBtn && menuCloseBtn && mobileMenu) {
+    menuOpenBtn.addEventListener("click", () => {
+      mobileMenu.classList.add("is-open");
+    });
+
+    menuCloseBtn.addEventListener("click", () => {
+      mobileMenu.classList.remove("is-open");
+    });
+  } else {
+    console.warn("Не знайдено елементи меню у DOM");
+  }
+});

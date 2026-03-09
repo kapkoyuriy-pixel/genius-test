@@ -1,0 +1,378 @@
+HTML — семантика і структура
+Семантичні блоки
+
+<header> — шапка сторінки або секції (логотип, навігація).
+
+<main> — основний контент сторінки (один на сторінку).
+
+<footer> — підвал (контакти, копірайт).
+
+<section> — тематичний блок; використовується для розділення контенту.
+
+<article> — самостійний матеріал (пост, стаття).
+
+<aside> — побічний контент (бічна панель, віджети).
+
+Заголовки і текст
+
+<h1>–<h6> — ієрархія заголовків; один <h1> на сторінку.
+
+<p> — абзац.
+
+<span> — інлайн‑контейнер для стилів або JS.
+
+Списки і посилання
+
+<ul>, <ol>, <li> — марковані/нумеровані списки.
+
+<a href=""> — посилання; при target="_blank" додай rel="noopener noreferrer".
+
+Кнопки і зображення
+
+<button> — для дій; має type (button, submit, reset).
+
+<img src alt> — обов’язково alt для доступності; для адаптивності — srcset/picture.
+
+Вкладеність
+
+Дотримуйся логіки: блокові елементи всередині блокових, інлайн — всередині інлайн; не вставляй div всередині p.
+
+Таблиці і фрейми
+
+<table> — тільки для табличних даних; використовуй thead, tbody, th, caption.
+
+<iframe> — вбудовує зовнішній контент; контролюй безпеку (sandbox) і додавай loading="lazy".
+
+CSS — підключення, синтаксис, селектори
+Підключення стилів
+
+Inline: style="..." — тільки для швидких правок.
+
+Вбудований: <style> — для сторінки.
+
+Зовнішній: <link rel="stylesheet" href="styles.css"> — рекомендовано.
+
+Синтаксис
+
+Правило: selector { property: value; }.
+
+Селектори
+
+Тег: div
+
+Клас: .btn
+
+ID: #header
+
+Атрибут: [type="text"]
+
+Нащадок: .nav a
+
+Дитина: .list > li
+
+Псевдокласи: :hover, :focus, :active, :nth-child().
+
+Каскадність і специфічність
+
+Інлайн > ID > клас/атрибут/псевдоклас > тег.
+
+!important — крайній засіб.
+
+Наслідування
+
+Деякі властивості (наприклад, color, font-family) наслідуються; інші — ні.
+
+Змінні CSS
+
+:root { --main-color: #06c; }
+
+Використання: color: var(--main-color);
+
+Шрифти
+
+Google Fonts: підключення через <link> або @import.
+
+Локальні: @font-face з різними форматами.
+
+Властивості: font-family, font-size, line-height, font-weight, letter-spacing.
+
+Layout: Flexbox, Grid, позиціонування
+Flexbox (одновимірні макети)
+
+Контейнер: display: flex;
+
+Властивості контейнера: flex-direction, justify-content, align-items, flex-wrap, gap.
+
+Властивості елемента: flex-grow, flex-shrink, flex-basis, скорочено flex: 1 0 auto;.
+
+Приклад Flexbox
+
+css
+.header { display: flex; justify-content: space-between; align-items: center; }
+.item { flex: 1; }
+Grid (двовимірні макети)
+
+Контейнер: display: grid;
+
+Властивості: grid-template-columns, grid-template-rows, gap, grid-area.
+
+Позиціонування
+
+static — за замовчуванням.
+
+relative — зміщення від нормального місця.
+
+absolute — позиціюється від найближчого предка з позицією (не static).
+
+fixed — відносно вікна браузера.
+
+sticky — прилипає при прокрутці.
+
+z-index — контролює накладання (працює для позиціонованих елементів).
+
+Overflow
+
+overflow: hidden/auto/scroll — контролює прокрутку і обрізання.
+
+Зображення, SVG, формати, srcset, picture
+Формати
+
+Растрові: JPEG (фото), PNG (прозорість), WebP/AVIF (сучасні, менші).
+
+Векторні: SVG — масштабуються без втрати якості, ідеальні для іконок.
+
+srcset і sizes
+
+Дає браузеру кілька варіантів зображення; браузер вибирає оптимальний.
+
+html
+<img src="photo-800.jpg"
+     srcset="photo-480.jpg 480w, photo-800.jpg 800w, photo-1200.jpg 1200w"
+     sizes="(max-width:600px) 480px, 800px"
+     alt="Фото">
+<picture>
+
+Для вибору формату або різних зображень за умовами:
+
+html
+<picture>
+  <source srcset="image.webp" type="image/webp">
+  <img src="image.jpg" alt="Опис">
+</picture>
+Ретина / щільність екрану
+
+Роблять 1x і 2x версії або використовують x позначення в srcset (image@2x.png 2x).
+
+SVG
+
+Inline SVG: <svg>...</svg> — можна стилізувати CSS/JS.
+
+Спрайт: один файл з іконками, використовуєш <use xlink:href="#icon-id">.
+
+viewBox: viewBox="0 0 width height" — визначає систему координат.
+
+Відео і аудіо
+
+<video controls src="..."> з poster, preload, muted, playsinline.
+
+Формати: MP4 (H.264), WebM.
+
+Практика
+
+Компресуй зображення, використовуй CDN, lazy loading (loading="lazy"), WebP/AVIF де можливо, SVG для іконок.
+
+Декор, псевдоелементи, фон, тіні, градієнти
+Фон
+
+background-image, background-size, background-position, background-repeat, background-attachment.
+
+Градієнти: linear-gradient(), radial-gradient().
+
+Тіні
+
+box-shadow, text-shadow.
+
+Псевдоелементи
+
+::before, ::after — додають декоративний контент; використовуються з content: "".
+
+Декоративні vs контентні зображення
+
+Контентні — <img> з alt.
+
+Декоративні — через CSS background-image або aria-hidden.
+
+Трансформації, переходи, анімації
+Transform
+
+transform: translate(), rotate(), scale(), skew() — змінює вигляд елемента без зміни потоку документа.
+
+Transition
+
+transition: property duration timing-function — плавні зміни при зміні властивостей.
+
+Animation
+
+@keyframes + animation — циклічні анімації.
+
+css
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+.element { animation: fadeIn 0.5s ease-in; }
+Порада
+
+Використовуй transform і opacity для плавних анімацій (GPU‑friendly). Уникай анімацій, що змінюють layout (наприклад, width) для кращої продуктивності.
+
+Форми і валідація
+Поля
+
+input[type="text"], email, password, number, checkbox, radio, file, textarea, select.
+
+HTML5 валідація
+
+required, type="email", min, max, pattern.
+
+Показуй користувачу зрозумілі повідомлення про помилки.
+
+JS валідація
+
+Додаткова перевірка перед відправкою; обробляй помилки і показуй підказки.
+
+Серверна валідація
+
+Обов’язкова — клієнтську можна обійти.
+
+UX
+
+Inline помилки, підказки, aria-* для доступності.
+
+Sass (SCSS) — препроцесор
+Що дає
+
+Змінні, вкладеність, міксини, функції, maps, імпорт файлів.
+
+Змінні
+
+scss
+$primary: #06c;
+Міксини
+
+scss
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box { @include center; }
+Вкладеність
+
+Пишеш стилі ієрархічно, але не зловживай — уникай дуже глибокої вкладеності.
+
+Автопрефікси
+
+Вендорні префікси автоматизуються через Autoprefixer у збірці.
+
+Практика
+
+Розбивай стилі на модулі, використовуй змінні для кольорів/шрифтів, міксини для повторюваних шаблонів.
+
+Методології CSS
+BEM
+
+Block Element Modifier: .block, .block__elem, .block--mod.
+
+Дає передбачувані іменування і ізоляцію стилів.
+
+Інші підходи
+
+OOCSS, SMACSS — різні принципи організації.
+
+Порада
+
+Вибери одну методологію і дотримуйся її в проєкті.
+
+Адаптивність (Responsive)
+Підходи
+
+Mobile‑first: базові стилі для мобільних, потім min-width медіа‑запити.
+
+Fluid layout: відсотки, vw, vh, clamp() для гнучких розмірів.
+
+Breakpoints: визначай по контенту, а не по конкретних пристроях.
+
+Практика
+
+srcset для зображень, flex/grid для макетів, приховуй/переставляй елементи через медіа‑запити.
+
+Інструменти, валідація, code style
+VS Code
+
+Розширення: Prettier, ESLint, Emmet, Live Server.
+
+W3C Validator
+
+Перевіряє валідність HTML/CSS; корисно для виявлення помилок.
+
+codeguide.co
+
+Рекомендації по стилю коду; використовуй як орієнтир.
+
+Практика
+
+Налаштуй форматування і linting; використовуй Git; автоматизуй CI для тестів і деплою.
+
+Продуктивність і accessibility
+Оптимізація
+
+Компресія зображень, WebP/AVIF, lazy loading, CDN, мінімізація CSS/JS, критичний CSS inline.
+
+Accessibility
+
+Семантичні теги, alt, aria-*, контрастність, фокус‑стилі.
+
+Моніторинг
+
+Логи, Sentry, Lighthouse для перевірки продуктивності.
+
+Короткі приклади для копіювання
+HTML семантика
+
+html
+<header>Логотип і навігація</header>
+<main>
+  <article>
+    <h1>Заголовок статті</h1>
+    <p>Текст...</p>
+  </article>
+  <aside>Бічна панель</aside>
+</main>
+<footer>Підвал</footer>
+srcset
+
+html
+<img src="photo-800.jpg"
+     srcset="photo-480.jpg 480w, photo-800.jpg 800w, photo-1200.jpg 1200w"
+     sizes="(max-width:600px) 480px, 800px"
+     alt="Фото">
+Flexbox
+
+css
+.container { display: flex; gap: 16px; }
+.item { flex: 1 1 200px; }
+Sass
+
+scss
+$primary: #06c;
+@mixin btn($bg) {
+  background: $bg;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+.button { @include btn($primary); }
+Поради для повторення
+Збережи цей файл як Markdown — зручно читати і редагувати.
+
+Практикуйся: копіюй приклади в простий проєкт і міняй параметри.
+
+Перед деплоєм перевіряй: валідатор, Lighthouse, accessibility.
+
+Якщо хочеш — я можу розширити будь‑який розділ (наприклад, детальніше про Sass, або приклади валідації форм) і додати більше практичних прикладів під твій стек.

@@ -1,0 +1,54 @@
+.hero-section {
+  padding: 124px 0;
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      /* верх — полупрозрачный чёрный */ rgba(0, 0, 0, 0.5) /* низ — такой же */
+    ),
+    url(/Images/abstract-background-cement-wall-shadow-light-concept.jpg);
+
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  @media screen and (min-width: $bp-desktop) {
+    padding: 272px 0;
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image:
+      linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        /* верх — полупрозрачный чёрный */ rgba(0, 0, 0, 0.5)
+          /* низ — такой же */
+      ),
+      url(/Images/abstract-background-cement-wall-shadow-light-concept@2x.jpg);
+  }
+
+  &__button {
+    margin: 0 auto;
+    @media screen and (min-width: $bp-desktop) {
+      display: none;
+    }
+  }
+}
+
+.hero-title {
+  margin-bottom: 48px;
+  color: var(--color-primary-light);
+  text-align: center;
+  font-size: 67px;
+  line-height: 1;
+  font-weight: 900;
+
+  @media screen and (min-width: $bp-desktop) {
+    font-size: 128px;
+    line-height: 1.5;
+  }
+}
+
+.hero-title .accent {
+  color: var(--color-brand-normal);
+}

@@ -1,0 +1,264 @@
+# 📘 Конспект по HTML, CSS, Sass та адаптивності
+
+## 📑 Зміст
+- [1. Семантика HTML](#1-семантика-html)
+- [2. Текстові теги](#2-текстові-теги)
+- [3. Списки і посилання](#3-списки-і-посилання)
+- [4. Кнопки і зображення](#4-кнопки-і-зображення)
+- [5. Таблиці і фрейми](#5-таблиці-і-фрейми)
+- [6. CSS — основи](#6-css--основи)
+- [7. Flexbox](#7-flexbox)
+- [8. Позиціонування](#8-позиціонування)
+- [9. Декор і фон](#9-декор-і-фон)
+- [10. SVG](#10-svg)
+- [11. Трансформації і анімації](#11-трансформації-і-анімації)
+- [12. Форми](#12-форми)
+- [13. Sass (SCSS)](#13-sass-scss)
+- [14. Методології CSS](#14-методології-css)
+- [15. Адаптивність](#15-адаптивність)
+- [16. Інструменти і валідація](#16-інструменти-і-валідація)
+- [📌 Приклади](#-приклади)
+
+---
+
+# 📘 Конспект по HTML, CSS, Sass та адаптивності
+
+## 1. Семантика HTML
+
+### Основні блоки
+
+- <header> — верхня частина сторінки (логотип, меню, навігація).
+- <main> — основний контент сторінки (має бути один).
+- <footer> — нижня частина (контакти, копірайт, посилання).
+- <section> — тематичний розділ сторінки (наприклад, "Про нас").
+- <article> — самостійний матеріал (стаття, пост, новина).
+- <aside> — бічний блок (реклама, додаткові відомості).
+
+**Приклад:**
+
+```html
+<header>Меню сайту</header>
+<main>
+  <section>
+    <article>
+      <h1>Новина</h1>
+      <p>Текст новини...</p>
+    </article>
+  </section>
+  <aside>Реклама</aside>
+</main>
+<footer>Контакти</footer>
+
+2. Текстові теги
+<h1>–<h6> — заголовки різних рівнів.
+Використовуються для структури тексту. Один <h1> на сторінку.
+
+<p> — абзац тексту.
+
+<span> — інлайн‑контейнер для стилів чи JS.
+
+Приклад:
+
+html
+<h1>Основний заголовок</h1>
+<p>Це абзац тексту.</p>
+<span class="highlight">Виділений текст</span>
+3. Списки і посилання
+<ul> — маркований список.
+
+<ol> — нумерований список.
+
+<li> — елемент списку.
+
+<a href=""> — посилання.
+
+Приклад:
+
+html
+<ul>
+  <li>Перший пункт</li>
+  <li>Другий пункт</li>
+</ul>
+<a href="https://example.com" target="_blank" rel="noopener noreferrer">Перейти</a>
+4. Кнопки і зображення
+<button> — кнопка для дій (submit, reset, або просто action).
+
+<img src alt> — зображення. Атрибут alt обов’язковий для доступності.
+
+Приклад:
+
+html
+<button type="submit">Відправити</button>
+<img src="logo.png" alt="Логотип компанії">
+
+5. Таблиці і фрейми
+<table> — для табличних даних. Використовуй <thead>, <tbody>, <th>.
+
+<iframe> — вбудовує зовнішній контент (наприклад, відео YouTube).
+
+Приклад:
+
+html
+<table>
+  <thead>
+    <tr><th>Ім’я</th><th>Вік</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Юрій</td><td>25</td></tr>
+  </tbody>
+</table>
+
+<iframe src="https://www.youtube.com/embed/xyz" width="560" height="315"></iframe>
+6. CSS — основи
+Підключення стилів
+Inline: <p style="color:red;">Текст</p>
+
+Вбудований: <style>p { color: red; }</style>
+
+Зовнішній: <link rel="stylesheet" href="style.css">
+
+Селектори
+Тег: p { color: red; }
+
+Клас: .btn { background: blue; }
+
+Ідентифікатор: #header { padding: 10px; }
+
+Атрибут: [type="text"] { border: 1px solid; }
+
+Нащадок: .nav a { color: green; }
+
+Дитина: .list > li { margin: 5px; }
+
+Псевдокласи: a:hover { color: red; }
+
+Каскадність і специфічність
+Inline > ID > клас > тег.
+
+Використовуй класи для стилізації, уникай ID.
+
+Змінні CSS
+css
+:root {
+  --main-color: #06c;
+}
+button {
+  background: var(--main-color);
+}
+Шрифти
+Google Fonts: <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+Локальні: @font-face { font-family: 'MyFont'; src: url('myfont.woff2'); }
+
+7. Flexbox
+Контейнер
+css
+.container {
+  display: flex;
+  flex-direction: row; /* або column */
+  justify-content: space-between; /* вирівнювання по горизонталі */
+  align-items: center; /* вирівнювання по вертикалі */
+  gap: 10px;
+}
+Елементи
+css
+.item {
+  flex-grow: 1; /* розтягується */
+  flex-shrink: 0; /* не стискається */
+  flex-basis: 200px; /* базова ширина */
+}
+8. Позиціонування
+position: static — стандартне.
+
+position: relative — зміщення від нормального місця.
+
+position: absolute — відносно предка.
+
+position: fixed — відносно вікна.
+
+position: sticky — прилипає при скролі.
+
+z-index — накладання.
+
+Приклад:
+
+css
+.box {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  z-index: 10;
+}
+9. Декор і фон
+background-image: url(bg.jpg);
+
+background-size: cover;
+
+background-position: center;
+
+box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+
+text-shadow: 1px 1px 2px #000;
+
+Псевдоелементи: ::before, ::after.
+
+10. SVG
+<svg> — inline.
+
+viewBox="0 0 100 100" — координати.
+
+Спрайт: <use xlink:href="#icon-id">.
+
+11. Трансформації і анімації
+css
+.box {
+  transform: rotate(45deg) scale(1.2);
+  transition: all 0.3s ease;
+}
+.box:hover {
+  transform: scale(1.5);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.element {
+  animation: fadeIn 1s ease-in;
+}
+12. Форми
+<input type="text">, <input type="email">, <input type="password">.
+
+<textarea>, <select>, <option>.
+
+Валідація: required, pattern="[0-9]{3}".
+
+13. Sass (SCSS)
+scss
+$primary: #06c;
+
+@mixin btn($bg) {
+  background: $bg;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.button {
+  @include btn($primary);
+}
+14. Методології CSS
+BEM: .block, .block__elem, .block--mod.
+
+15. Адаптивність
+css
+@media (max-width: 600px) {
+  .sidebar { display: none; }
+}
+Використовуй vw, vh, %, clamp() для гнучких розмірів.
+
+16. Інструменти і валідація
+VS Code: Prettier, ESLint, Emmet.
+
+W3C Validator.
+
+codeguide.co  — стиль коду.
+```
